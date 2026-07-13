@@ -42,52 +42,53 @@ export const useNaver = () => {
  *
  * @returns {any} 카카오 SDK 객체 (로딩 전에는 null)
  */
-import { useContext, useEffect } from "react"
+
+const KAKAO_SDK_JS_KEY = import.meta.env.REACT_APP_KAKAO_JS_KEY || ""; 
 
 export const useKakao = () => {
   const { kakao, setKakao } = useContext(StoreContext)
 
   useEffect(() => {
-    // 1. SDK 키가 없으면 중단
+    // 1. SDK 키가 없으면 중단 (배포 환경 변수 체크용)
     if (!KAKAO_SDK_JS_KEY) {
-      console.warn("Kakao SDK Key가 없습니다.")
+      console.warn("Kakao SDK Key가 존재하지 않습니다. 환경 변수를 확인해주세요.");
       return
     }
 
-    // 카카오 SDK 초기화 및 상태 저장을 위한 내부 함수
+    // 초기화를 안전하게 실행하는 내부 함수 (setTimeout으로 전역 객체 매핑 타이밍 보장)
     const initKakao = () => {
-      const KakaoInstance = (window as any).Kakao
-      if (KakaoInstance) {
-        if (!KakaoInstance.isInitialized()) {
-          KakaoInstance.init(KAKAO_SDK_JS_KEY)
+      setTimeout(() => {
+        const KakaoInstance = (window as any).Kakao
+        if (KakaoInstance) {
+          if (!KakaoInstance.isInitialized()) {
+            KakaoInstance.init(KAKAO_SDK_JS_KEY)
+          }
+          setKakao(KakaoInstance)
         }
-        setKakao(KakaoInstance)
-      }
+      }, 100)
     }
 
-    // 2. 이미 window에 Kakao 객체가 존재하고 초기화까지 끝났다면 바로 세팅
+    // 2. 이미 window에 Kakao 객체가 존재하고 초기화까지 끝났다면 상태만 갱신
     if ((window as any).Kakao && (window as any).Kakao.isInitialized()) {
       setKakao((window as any).Kakao)
       return
     }
 
-    // 3. 스크립트 태그가 이미 존재한다면 스크립트 로드 이벤트를 기다리지 않고 바로 초기화 시도
+    // 3. 스크립트 태그가 이미 존재한다면 바로 초기화 시도
     if (document.querySelector(`script[src="${KAKAO_SDK_URL}"]`)) {
-      // 혹시 아직 로딩 중일 수도 있으므로, window.Kakao가 생길 때까지 안전하게 체크하거나 바로 실행
       if ((window as any).Kakao) {
         initKakao()
       } else {
-        // 스크립트는 있지만 아직 window에 안 올라온 기이한 타이밍 대비
         const existingScript = document.querySelector(`script[src="${KAKAO_SDK_URL}"]`)
         existingScript?.addEventListener("load", initKakao)
       }
       return
     }
 
-    // 4. 스크립트가 아예 없을 때만 동적으로 추가 (기존 로직)
+    // 4. 스크립트가 아예 없을 때만 동적으로 추가
     const script = document.createElement("script")
     script.src = KAKAO_SDK_URL
-    script.async = true // 모바일 비동기 로딩 보장
+    script.async = true
     script.addEventListener("load", initKakao)
     document.head.appendChild(script)
 
