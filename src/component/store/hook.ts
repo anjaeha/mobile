@@ -45,9 +45,9 @@ export const useNaver = () => {
 export const useKakao = () => {
   const { kakao, setKakao } = useContext(StoreContext)
   useEffect(() => {
-    console.log(KAKAO_SDK_JS_KEY)
     // SDK 키가 없으면 중단
     if (!KAKAO_SDK_JS_KEY) {
+      alert("카카오 SDK 키가 설정되지 않았습니다. .env 파일을 확인해주세요.")
       return
     }
 
