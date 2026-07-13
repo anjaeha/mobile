@@ -32,7 +32,7 @@ export const HOLIDAYS = [25]
 /**
  * 예식 장소 명칭
  */
-export const LOCATION = "우리은행 본점"
+export const LOCATION = "우리은행 본점
 
 /**
  * 예식 장소 상세 주소
