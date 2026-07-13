@@ -2,10 +2,10 @@
   "name": "wedding-invitation",
   "version": "0.1.0",
   "description": "A wedding invitation web page template",
-  "author": "Ju Ho Nam <jhnamnam@gmail.com> (https://juhonamnam.github.io/)",
+  "author": "Jae Ha Ahn <vix849@gmail.com> (https://ahnjaeha.github.io/)",
   "license": "MIT",
   "private": true,
-  "homepage": "https://juhonamnam.github.io/wedding-invitation",
+  "homepage": "https://ahnjaeha.github.io/mobile",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -47,5 +47,14 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "prettier": "^3.2.5",
     "typescript-eslint": "^8.35.1"
+  },
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anjaeha/mobile.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/anjaeha/mobile/issues"
   }
 }
