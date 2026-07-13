@@ -5,7 +5,7 @@
   "author": "Jae Ha Ahn <vix849@gmail.com> (https://ahnjaeha.github.io/)",
   "license": "MIT",
   "private": true,
-  "homepage": "https://ahnjaeha.github.io/mobile",
+  "homepage": "https://ahnjaeha.github.io",
   "type": "module",
   "scripts": {
     "dev": "vite",
