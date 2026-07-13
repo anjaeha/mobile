@@ -20,19 +20,9 @@ declare global { interface Window { naver: any; } }
  * @returns {JSX.Element} 지도 컴포넌트
  */
 export const Map = () => {
-  useEffect(() => {
-    if (window.naver && window.naver.maps) return;
 
-    // 💡 키 값을 .env 대신 여기에 진짜 생글자로 직접 넣어버립니다!
-    const script = document.createElement("script")
-    script.type = "text/javascript"
-    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=2aw5png2mx`
-    script.async = true
-
-    document.head.appendChild(script)
-  }, [])
   // 네이버 지도 클라이언트 ID가 설정되어 있을 때만 지도를 렌더링합니다.
-  return <NaverMap />
+  return NAVER_MAP_CLIENT_ID ? <NaverMap /> : <div>Map is not available</div>
 }
 
 /**
