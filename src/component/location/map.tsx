@@ -12,6 +12,7 @@ import {
   WEDDING_HALL_POSITION,
 } from "../../const"
 import { NAVER_MAP_CLIENT_ID } from "../../env"
+declare global { interface Window { naver: any; } }
 
 /**
  * 지도를 표시하고 길찾기 앱(네이버, 카카오, 티맵) 연동 기능을 제공하는 컴포넌트입니다.
@@ -19,6 +20,21 @@ import { NAVER_MAP_CLIENT_ID } from "../../env"
  * @returns {JSX.Element} 지도 컴포넌트
  */
 export const Map = () => {
+  useEffect(() => {
+    // 1. 이미 네이버 지도 스크립트가 있다면 중복 등록을 방지합니다.
+    if (window.naver && window.naver.maps) return;
+    console.log(123)
+    console.log(NAVER_MAP_CLIENT_ID)
+    // 2. env 파일의 키 값을 가지고 와서 index.html 대신 여기에 스크립트를 꽂아줍니다.
+    if (NAVER_MAP_CLIENT_ID) {
+      const script = document.createElement("script")
+      script.type = "text/javascript"
+      script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${NAVER_MAP_CLIENT_ID}`
+      script.async = true
+
+      document.head.appendChild(script)
+    }
+  }, [])
   // 네이버 지도 클라이언트 ID가 설정되어 있을 때만 지도를 렌더링합니다.
   return NAVER_MAP_CLIENT_ID ? <NaverMap /> : <div>Map is not available</div>
 }
