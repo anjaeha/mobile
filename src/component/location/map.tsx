@@ -32,7 +32,7 @@ export const Map = () => {
     document.head.appendChild(script)
   }, [])
   // 네이버 지도 클라이언트 ID가 설정되어 있을 때만 지도를 렌더링합니다.
-  return NAVER_MAP_CLIENT_ID ? <NaverMap /> : <div>Map is not available</div>
+  return <NaverMap />
 }
 
 /**
