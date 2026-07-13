@@ -21,19 +21,15 @@ declare global { interface Window { naver: any; } }
  */
 export const Map = () => {
   useEffect(() => {
-    // 1. 이미 네이버 지도 스크립트가 있다면 중복 등록을 방지합니다.
     if (window.naver && window.naver.maps) return;
-    console.log(123)
-    console.log("네이버 키 직접 확인:", import.meta.env.VITE_NAVER_MAP_CLIENT_ID);
-    // 2. env 파일의 키 값을 가지고 와서 index.html 대신 여기에 스크립트를 꽂아줍니다.
-    if (NAVER_MAP_CLIENT_ID) {
-      const script = document.createElement("script")
-      script.type = "text/javascript"
-      script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${NAVER_MAP_CLIENT_ID}`
-      script.async = true
 
-      document.head.appendChild(script)
-    }
+    // 💡 키 값을 .env 대신 여기에 진짜 생글자로 직접 넣어버립니다!
+    const script = document.createElement("script")
+    script.type = "text/javascript"
+    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=2aw5png2mx`
+    script.async = true
+
+    document.head.appendChild(script)
   }, [])
   // 네이버 지도 클라이언트 ID가 설정되어 있을 때만 지도를 렌더링합니다.
   return NAVER_MAP_CLIENT_ID ? <NaverMap /> : <div>Map is not available</div>
