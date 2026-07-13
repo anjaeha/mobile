@@ -48,7 +48,7 @@ function App() {
           {/* 축의금 및 연락처 정보 섹션 */}
           <Information />
           {/* 방명록 섹션 (정적 모드가 아닐 때만 표시) */}
-          {!STATIC_ONLY && <GuestBook />}
+          {/* {!STATIC_ONLY && <GuestBook />} */}
         </LazyDiv>
 
         {/* 카카오톡/링크 공유 버튼 */}
