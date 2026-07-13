@@ -65,7 +65,7 @@ export const NMAP_PLACE_ID = 12127345
  * 카카오 지도 장소 ID (KMAP_PLACE_ID)
  * 카카오 지도에서 장소 상세보기 클릭 후 URL의 숫자 부분을 입력합니다.
  */
-export const KMAP_PLACE_ID = 8634826
+export const KMAP_PLACE_ID = 8466281
 
 // 신부 정보 설정
 export const BRIDE_FULLNAME = "노은영"
