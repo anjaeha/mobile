@@ -43,7 +43,7 @@ export const useNaver = () => {
  * @returns {any} 카카오 SDK 객체 (로딩 전에는 null)
  */
 
-const KAKAO_SDK_JS_KEY = import.meta.env.REACT_APP_KAKAO_JS_KEY || ""; 
+const KAKAO_SDK_JS_KEY = "f64a0349fea689f595467438669ec10d";
 
 export const useKakao = () => {
   const { kakao, setKakao } = useContext(StoreContext)
