@@ -34,7 +34,7 @@ export const Invitation = () => {
 
         {/* 초대 문구 */}
         <div className="content">같은 일상 속에서</div>
-        <div className="content">싹튼신뢰가 사랑이 되었습니다.</div>
+        <div className="content">싹튼 신뢰가 사랑이 되었습니다.</div>
         <div className="break" />
         <div className="content">서로의 노력을 가까이서 지켜보며</div>
         <div className="content">깊은 존중을 배웠고</div>
