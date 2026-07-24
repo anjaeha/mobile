@@ -46,7 +46,7 @@ export const ShareButton = () => {
 
           // 이동할 메인 주소와 카톡에 띄울 미리보기 이미지 주소 생성
           const targetUrl = getAbsoluteUrl()
-          const previewImageUrl = getAbsoluteUrl("preview_image.png")
+          const previewImageUrl = getAbsoluteUrl("preview_image.jpg")
 
           // 카카오톡 공유 전송 (위치 기반 location 템플릿 사용)
           kakao.Share.sendDefault({
