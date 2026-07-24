@@ -41,9 +41,7 @@ export const Invitation = () => {
         <div className="content">이제는 그 믿음을 바탕으로</div>
         <div className="content">하나의 가정을 이루고자 합니다.</div>
         <div className="break" />
-        <div className="content">저희의 소중한 시작을</div>
-        <div className="content">축복해 주시면 감사하겠습니다.</div>
-
+        <div className="content">저희의 소중한 시작을 축복해주세요.</div>
         <div className="break" />
 
         {/* 혼주 및 신랑 정보 */}
