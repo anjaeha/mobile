@@ -38,7 +38,7 @@ export const Invitation = () => {
         <div className="break" />
         <div className="content">서로의 노력을 가까이서 지켜보며</div>
         <div className="content">깊은 존중을 배웠고</div>
-        <div className="content">이제는 그 믿을을 바탕으로</div>
+        <div className="content">이제는 그 믿음을 바탕으로</div>
         <div className="content">하나의 가정을 이루고자 합니다.</div>
         <div className="break" />
         <div className="content">저희의 소중한 시작을</div>
